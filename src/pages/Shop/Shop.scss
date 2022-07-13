@@ -1,0 +1,245 @@
+.shop {
+    position: absolute;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    transition: all 0.6s;
+
+    &_active {
+        opacity: 1;
+    }
+
+    &-content {
+        position: relative;
+
+        width: 134.44444444444443vh;
+        height: 73.51851851851852vh;
+
+        border-radius: 0.4629629629629629vh;
+
+        background: rgba(0, 0, 0, 0.32);
+
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            background: linear-gradient(253.35deg, #25325E 0%, #5879EF 100%);
+            z-index: -1;
+        }
+
+        &-header {
+            padding-left: 2.685185185185185vh;
+            padding-right: 1.4814814814814814vh;
+
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+
+            &__title {
+                margin-top: 2.5925925925925926vh;
+
+                font-family: 'Geometria Medium';
+                font-size: 4.444444444444444vh;
+                color: #fff;
+            }
+
+            &__button {
+                margin-top: 0.5555555555555555vh;
+                width: 4.444444444444444vh;
+                height: 4.444444444444444vh;
+
+                background: url(../../assets/images/shop/icons/close.svg) no-repeat;
+                background-size: cover;
+
+                transition: all 0.3s;
+
+                &:hover {
+                    opacity: 0.6;
+                }
+            }
+        }
+
+        &-container {
+            width: 100%;
+            height: 100%;
+
+            display: flex;            
+
+            &-navigation {
+                position: relative;
+
+                margin-top: 3.518518518518518vh;
+                margin-left: 2.0370370370370368vh;
+
+                padding-right: 1.8518518518518516vh;
+
+                width: 28.98148148148148vh;
+                height: 62.87037037037037vh;
+
+                display: flex;
+                flex-direction: column;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+
+                    width: 0.18518518518518517vh;
+                    height: 100%;
+
+                    background-image: linear-gradient(rgba(210, 210, 210, 0.67) 33%, rgba(255,255,255,0) 0%);
+                    background-position: right;
+                    background-size: 0.09259259259259259vh 0.9259259259259258vh;
+                    background-repeat: repeat-y;
+                }
+
+
+                &-box {
+                    position: relative;
+
+                    margin-bottom: 1.2962962962962963vh;
+
+                    width: 27.22222222222222vh;
+                    height: 6.111111111111111vh;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    border-radius: 0.4629629629629629vh;
+
+                    font-family: 'Geometria Medium';
+                    font-size: 1.6666666666666665vh;
+                    color: #fff;
+
+                    transition: all 0.3s;
+
+                    &:first-of-type {
+                        margin-top: 2.962962962962963vh;
+                    }
+
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+
+                        width: 100%;
+                        height: 100%;
+
+                        background: rgba(0, 0, 0, 0.47);
+
+                        transition: all 0.3s;
+
+                        z-index: -1;
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+
+                        width: 100%;
+                        height: 100%;
+
+                        background: linear-gradient(267.11deg, #4B5FA6 0%, #5879EF 100%);
+
+                        transition: all 0.3s;
+                        opacity: 0;
+
+                        z-index: -1;
+                    }
+
+                    &:hover, &_active {
+                        box-shadow: 0vh 0.37037037037037035vh 0.18518518518518517vh rgba(0, 0, 0, 0.25);
+                    }
+
+                    &:hover::before, &_active::before {
+                        opacity: 0;
+                    }
+
+                    &:hover::after, &_active::after {
+                        opacity: 1;
+                    }
+                }
+
+                &__button {
+                    position: relative;
+                    margin-top: auto;
+
+                    margin-bottom: 3.0555555555555554vh;
+
+                    width: 27.22222222222222vh;
+                    height: 6.111111111111111vh;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    background: linear-gradient(267.11deg, #4B5FA6 0%, #5879EF 100%);
+
+                    border-radius: 0.4629629629629629vh;
+
+                    font-family: 'Geometria Medium';
+                    font-size: 1.6666666666666665vh;
+                    color: #fff;
+                    text-transform: uppercase;
+
+                    transition: all 0.3s;
+
+                    opacity: 0;
+                    
+                    visibility: hidden;
+
+                    &_active {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+
+                    &:hover {
+                        opacity: 0.6;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@media (aspect-ratio: 4/3) {
+    .shop-content {
+        zoom: 0.8;
+    }
+
+    .Toastify {
+        zoom: 0.6;
+    }
+}
+@media (aspect-ratio: 5/4) {
+    .shop-content {
+        zoom: 0.8;
+    }
+
+    .Toastify {
+        zoom: 0.8;
+    }
+}
+@media (aspect-ratio: 577/540) {
+    .shop-content, .Toastify {
+        zoom: 0.7;
+    }
+}

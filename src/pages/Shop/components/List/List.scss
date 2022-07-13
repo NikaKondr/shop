@@ -1,0 +1,192 @@
+.shop-content-container-list {
+    margin-top: 3.7037037037037033vh;
+    margin-left: 4.444444444444444vh;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    &-header {
+        padding-right: 7.222222222222221vh;
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+
+
+        &-basket {
+            display: flex;
+            align-items: center;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: all 0.3s;
+
+            &_active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &-button {
+                position: relative;
+
+                width: 6.296296296296296vh;
+                height: 5.092592592592593vh;
+
+                background: #4B5FA6;
+                background-image: url(../../../../assets/images/shop/icons/shopcart.svg) ;
+                background-repeat: no-repeat;
+                background-size: 3.4259259259259256vh 3.0555555555555554vh;
+                background-position: 1.2037037037037037vh;
+                border-radius: 0.4629629629629629vh;
+
+                transition: all 0.3s;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+
+                & div {
+                    position: absolute;
+                    left: -1.2037037037037037vh;
+                    top: -0.9259259259259258vh;
+                    padding: 0.37037037037037035vh 0.9259259259259258vh 0.37037037037037035vh 0.9259259259259258vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    background: #5879EF;
+                    box-shadow: 0vh 0vh 1.3888888888888888vh #5879EF;
+                    border-radius: 0.4629629629629629vh;
+
+                    font-family: 'Geometria Medium';
+                    font-size: 1.2962962962962963vh;
+                    color: #fff;
+                }
+            }
+
+            & span {
+                margin-left: 0.4629629629629629vh;
+
+                width: 16.944444444444443vh;
+                font-family: 'Geometria Medium';
+                font-size: 1.2962962962962963vh;
+                color: #fff;
+            }
+        }
+
+        &-text {
+            margin-top: 1.2037037037037037vh;
+            font-family: 'Geometria Medium';
+            font-size: 1.6666666666666665vh;
+            color: #B3B3B3;
+
+            & span {
+                font-family: 'Geometria Bold';
+                color: #fff;
+            }
+        }
+
+    }
+
+    &-items {
+        margin-top: 1.8518518518518516vh;
+
+        width: 95vh;
+        height: 53.24074074074074vh;
+
+        display: grid;
+
+        grid-template-columns: repeat(4, 20.555555555555554vh);
+        row-gap: 1.574074074074074vh;
+        column-gap: 3.148148148148148vh;
+
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            width: 0.5555555555555555vh;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.49);
+            border-radius: 2.314814814814815vh;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(4, 132, 250, 0.84);
+            box-shadow: 0vh 0vh 1.3888888888888888vh rgba(4, 132, 250, 0.84);
+            border-radius: 2.314814814814815vh;
+        }
+
+        &-box {
+            position: relative;
+
+            width: 20.555555555555554vh;
+            height: 24.444444444444443vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0.4629629629629629vh;
+
+            & img {
+                margin-top: auto;
+
+                max-width: 15.37037037037037vh;
+                max-height: 14.999999999999998vh;
+
+                pointer-events: none;
+            }
+
+            &__name {
+                margin-top: auto;
+
+                font-family: 'Geometria Medium';
+                font-size: 1.2962962962962963vh;
+                color: #818181;
+            }
+
+            &__price {
+                margin-top: 0.6481481481481481vh;
+                margin-bottom: 4.0740740740740735vh;
+
+                font-family: 'Geometria Medium';
+                font-size: 1.2962962962962963vh;
+                color: #818181;
+
+                & span {
+                    color: #fff;
+                }
+            }
+
+            &__button {
+                position: absolute;
+                bottom: -0.9259259259259258vh;
+
+                width: 7.777777777777778vh;
+                height: 2.222222222222222vh;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background: #4B5FA6;
+                border-radius: 0.4629629629629629vh;
+
+                font-family: 'Geometria Medium';
+                font-size: 1.2962962962962963vh;
+                color: #fff;
+
+                transition: all 0.3s;
+
+                &:hover {
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+}

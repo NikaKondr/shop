@@ -1,0 +1,160 @@
+.shop-content-modal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.56);
+
+    z-index: -1;
+    opacity: 0;
+
+    transition: all 0.3s;
+
+    &_active {
+        z-index: 999;
+        opacity: 1;
+    }
+
+    &__title {
+        font-family: 'Geometria Medium';
+        font-size: 3.333333333333333vh;
+        color: #fff;
+    }
+
+    &__money {
+        display: flex;
+
+        font-family: 'Geometria Medium';
+        font-size: 1.2037037037037037vh;
+        color: #fff;
+        
+        & span:last-of-type {
+            margin-left: 0.9259259259259258vh;
+        }
+    }
+
+    &__amount {
+        margin-top: 1.2037037037037037vh;
+
+        font-family: 'Geometria Medium';
+        font-size: 1.2037037037037037vh;
+        color: #fff;
+        
+        & span {
+            color: #17B627;
+        }
+    }
+
+    &-payment {
+        padding-left: 5vh;
+        padding-right: 5vh;
+
+        margin-top: 2.5925925925925926vh;
+
+        width: 52.59259259259259vh;
+        height: 9.907407407407407vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background: linear-gradient(253.21deg, rgba(37, 50, 94, 0.45) 0%, rgba(88, 121, 239, 0.45) 100%);
+        border-radius: 2.314814814814815vh;
+
+        &-box {
+            position: relative;
+
+            width: 15.092592592592592vh;
+            height: 4.814814814814815vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: 'Geometria Medium';
+            font-size: 1.2037037037037037vh;
+            color: #fff;
+
+            overflow: hidden;
+
+            border-radius: 0.4629629629629629vh;
+            text-transform: uppercase;
+
+            &::before {
+                content: '';
+                position: absolute;
+
+                width: 100%;
+                height: 100%;
+
+                background: rgba(0, 0, 0, 0.47);
+
+                transition: all 0.3s;
+                z-index: -1;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+
+                width: 100%;
+                height: 100%;
+
+                background: linear-gradient(235.34deg, #4B5FA6 0%, #5879EF 99%);
+
+                transition: all 0.3s;
+                opacity: 0;
+                z-index: -1;
+            }
+
+            &_active::before, &:hover::before {
+                opacity: 0;
+            }
+
+            &_active::after, &:hover::after {
+                opacity: 1;
+            }
+
+            &_active, &:hover {
+                box-shadow: 0vh 0.4629629629629629vh 0.18518518518518517vh rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+
+    &-buttons {
+        margin-top: 3.148148148148148vh;
+        display: flex;
+
+        &-box {
+            margin-right: 2.5vh;
+
+            width: 16.944444444444443vh;
+            height: 4.814814814814815vh;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(235.34deg, #4B5FA6 0%, #5879EF 99%);
+            box-shadow: 0vh 0.4629629629629629vh 0.18518518518518517vh rgba(0, 0, 0, 0.25);
+            border-radius: 0.4629629629629629vh;
+
+            font-family: 'Geometria Medium';
+            font-size: 1.2037037037037037vh;
+            color: #fff;
+
+            transition: all 0.3s;
+
+            text-transform: uppercase;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+}
