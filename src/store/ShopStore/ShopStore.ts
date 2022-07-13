@@ -99,7 +99,7 @@ export default class ShopStore {
 
     constructor() {
         makeObservable(this, {
-            isShow: true,
+            isShow: observable,
             name: observable,
             shop: observable,
 

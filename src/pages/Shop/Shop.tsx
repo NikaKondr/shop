@@ -26,8 +26,8 @@ const Shop: React.FC<{ store: ShopStore, playerStore: PlayerStore }> = ( { store
     const screen = React.useRef<any>( null );
 
     React.useEffect( () => {
-        screen.current.classList.add( 'shop_active' );
-    }, [] );
+        if ( store.isShow ) screen.current.classList.add( 'shop_active' );
+    }, [ store.isShow ] );
 
     const addShopBasket = React.useCallback( ( obj: any ) => {
         if ( shopBasket.length + 1 > 0 ) setShowButtonBuy( true )
@@ -56,7 +56,7 @@ const Shop: React.FC<{ store: ShopStore, playerStore: PlayerStore }> = ( { store
             const arrFilter = shopBasketCopy.filter( item => item.uuid !== obj.uuid );
             setShopBasket( arrFilter );
             setCurrentItemDelete( null );
-        }, 500 );
+        }, 300 );
 
         return () => clearTimeout( timeout );
 
