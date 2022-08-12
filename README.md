@@ -7,7 +7,7 @@
 
 Дизайн взят с [ragemp.pro](https://ragemp.pro/)
 
-Автор дизайна: (напиши добавлю)
+Автор дизайна: [Paradox](https://ragemp.pro/members/paradox.3833/)
 
 Разработка: discord: **peach#5569**
   
