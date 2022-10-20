@@ -1,4 +1,4 @@
-.shop-content-container-basket {
+.main {
     margin-top: 1.2962962962962963vh;
 
     width: 100%;
@@ -7,13 +7,13 @@
     flex-direction: column;
     align-items: center;
 
-    &__title {
+    .__title {
         font-family: 'Geometria Medium';
         font-size: 5.925925925925926vh;
         color: #fff;
     }
 
-    &__desc {
+    .__desc {
         font-family: 'Geometria Light';
         font-size: 1.2962962962962963vh;
         color: #D8D8D8;
@@ -23,36 +23,36 @@
         }
     }
 
-    &-list {
+    .list {
         margin-left: 6.5740740740740735vh;
         margin-top: 2.8703703703703702vh;
 
         display: flex;
         flex-direction: column;
 
-        &-titles {
+        .titles {
             width: 100%;
 
             display: flex;
-    
+
             font-family: 'Geometria Light';
             font-size: 1.111111111111111vh;
             color: #5879EF;
 
-            &__number {
+            .__number {
                 width: 6.666666666666666vh;
             }
 
-            &__name {
+            .__name {
                 width: 33.05555555555555vh;
             }
 
-            &__amount {
+            .__amount {
                 width: 13.148148148148147vh;
             }
         }
 
-        &-container {
+        .container {
             position: relative;
             margin-top: 0.6481481481481481vh;
             padding-right: 6.5740740740740735vh;
@@ -62,7 +62,7 @@
 
             display: flex;
             flex-direction: column;
-            
+
             overflow-y: auto;
             overflow-x: hidden;
 
@@ -81,8 +81,8 @@
                 border-radius: 2.314814814814815vh;
             }
 
-            &-box {
-                position:absolute;
+            .box {
+                position: absolute;
                 width: 56.75925925925925vh;
                 height: 3.7037037037037033vh;
 
@@ -99,26 +99,22 @@
 
                 transition: all 0.3s;
 
-                &_delete {
-                    transform: translate(150%, 0%);
-                }
-
-                &__number {
+                .__number {
                     width: 4.166666666666666vh;
                     color: #454545;
                     text-align: center;
                 }
 
-                &__name {
+                .__name {
                     margin-left: 2.5vh;
                     width: 33.05555555555555vh;
                 }
 
-                &__amount {
+                .__amount {
                     width: 13.148148148148147vh;
                 }
 
-                &__button {
+                .__button {
                     margin-left: auto;
                     margin-right: 0.9259259259259258vh;
 
@@ -134,6 +130,10 @@
                         opacity: 0.5;
                     }
                 }
+            }
+
+            .box_delete {
+                transform: translate(150%, 0%);
             }
         }
     }

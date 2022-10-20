@@ -3,8 +3,9 @@ import { useLocalObservable } from 'mobx-react-lite';
 import EventManager from './utils/EventManager';
 
 import Shop from './pages/Shop';
-import ShopStore from './store/ShopStore';
+
 import PlayerStore from './store/PlayerStore';
+import ShopStore from './store/ShopStore';
 
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
         playerStore = useLocalObservable( () => new PlayerStore() );
 
     React.useEffect( () => {
-        EventManager.addHandler( 'player', ( value: any ) => {
+        EventManager.addHandler( 'player', ( value: { type: string, data: any } ) => {
             switch ( value.type ) {
                 case 'setPlayerState':
                     return playerStore.setPlayerState( value.data );

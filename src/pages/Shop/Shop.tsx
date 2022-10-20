@@ -6,30 +6,34 @@ import EventManager from '../../utils/EventManager';
 import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import ShopStore from '../../store/ShopStore';
+import ShopStore from '../../store/ShopStore/Shop.store';
 import PlayerStore from '../../store/PlayerStore';
 
 import List from './components/List'
 import Basket from './components/Basket';
 import Modal from './components/Modal';
 
-import './Shop.scss'
+import style from './shop.module.scss'
+
+export interface IShopBasket { uuid: string, hash: string, name: string, price: number }
+export type shopPages = 'list' | 'basket'
 
 const Shop: React.FC<{ store: ShopStore, playerStore: PlayerStore }> = ( { store, playerStore } ) => {
-    const [ currentCategory, setCurrentCategory ] = React.useState( 0 ),
-        [ page, setPage ] = React.useState( 'list' ),
-        [ shopBasket, setShopBasket ] = React.useState<any[]>( [] ),
-        [ currentItemDelete, setCurrentItemDelete ] = React.useState( null ),
-        [ showModal, setShowModal ] = React.useState( false ),
-        [ showButtonBuy, setShowButtonBuy ] = React.useState( false );
 
-    const screen = React.useRef<any>( null );
+    const [ currentCategory, setCurrentCategory ] = React.useState<number>( 0 ),
+        [ page, setPage ] = React.useState<shopPages>( 'list' ),
+        [ shopBasket, setShopBasket ] = React.useState<IShopBasket[]>( [] ),
+        [ currentItemDelete, setCurrentItemDelete ] = React.useState<IShopBasket | null>( null ),
+        [ showModal, setShowModal ] = React.useState<boolean>( false ),
+        [ showButtonBuy, setShowButtonBuy ] = React.useState<boolean>( false );
+
+    const screen = React.useRef<HTMLDivElement>( null );
 
     React.useEffect( () => {
-        if ( store.isShow ) screen.current.classList.add( 'shop_active' );
+        if ( store.isShow ) screen.current && screen.current.classList.add( style.main_active );
     }, [ store.isShow ] );
 
-    const addShopBasket = React.useCallback( ( obj: any ) => {
+    const addShopBasket = React.useCallback( ( obj: IShopBasket ) => {
         if ( shopBasket.length + 1 > 0 ) setShowButtonBuy( true )
         if ( shopBasket.length + 1 > 20 ) {
             toast.error( "Привышен лимит", {
@@ -46,7 +50,7 @@ const Shop: React.FC<{ store: ShopStore, playerStore: PlayerStore }> = ( { store
 
     }, [ shopBasket ] );
 
-    const removeShopBasket = React.useCallback( ( obj: any ) => {
+    const removeShopBasket = React.useCallback( ( obj: IShopBasket ) => {
         if ( currentItemDelete !== null ) return;
         if ( shopBasket.length - 1 === 0 ) setShowButtonBuy( false );
         setCurrentItemDelete( obj );
@@ -80,7 +84,7 @@ const Shop: React.FC<{ store: ShopStore, playerStore: PlayerStore }> = ( { store
     }, [ showModal, shopBasket.length ] );
 
     React.useEffect( () => {
-        EventManager.addHandler( 'shop', ( value: any ) => {
+        EventManager.addHandler( 'shop', ( value: { type: string, data: any } ) => {
             switch ( value.type ) {
                 case 'setShow':
                     return store.setShow( value.data );
@@ -98,7 +102,7 @@ const Shop: React.FC<{ store: ShopStore, playerStore: PlayerStore }> = ( { store
 
     if ( !store.isShow ) return null;
 
-    return <div ref={screen} className='shop'>
+    return <div ref={screen} className={style.main}>
         <ToastContainer
             containerId="app-notifications"
             transition={Flip}
@@ -112,29 +116,29 @@ const Shop: React.FC<{ store: ShopStore, playerStore: PlayerStore }> = ( { store
             draggable={false}
             limit={3}
         />
-        <div className='shop-content'>
-            <Modal store={store} playerStore={playerStore} {...{ showModal, setShowModal, shopBasket, setShopBasket, setShowButtonBuy }} />
-            <div className='shop-content-header'>
-                <div className='shop-content-header__title'>{store.name}</div>
-                <div className='shop-content-header__button' onClick={() => EventManager.trigger( 'shop', 'close' )} />
+        <div className={style.content}>
+            <Modal playerStore={playerStore} {...{ showModal, setShowModal, shopBasket, setShopBasket, setShowButtonBuy }} />
+            <div className={style.header}>
+                <div className={style.__title}>{store.name}</div>
+                <div className={style.__button} onClick={() => EventManager.trigger( 'shop', 'close' )} />
             </div>
-            <div className='shop-content-container'>
-                <div className='shop-content-container-navigation'>
+            <div className={style.container}>
+                <div className={style.navigation}>
                     {store.shop.map( ( el, key ) => {
                         return <div
                             key={key}
-                            className={cn( 'shop-content-container-navigation-box', currentCategory === el.id && 'shop-content-container-navigation-box_active' )}
+                            className={cn( style.box, currentCategory === el.id && style.box_active )}
                             onClick={() => { setCurrentCategory( el.id ); setPage( 'list' ) }}
                         >{el.name}</div>
 
                     } )}
                     <div
-                        className={cn( 'shop-content-container-navigation__button', showButtonBuy && 'shop-content-container-navigation__button_active' )}
+                        className={cn( style.__button, showButtonBuy && style.__button_active )}
                         onClick={() => setShowModal( true )}
                     >Оплатить</div>
                 </div>
                 {page === 'list' && <List store={store} {...{ currentCategory, addShopBasket, setPage, shopBasket }} />}
-                {page === 'basket' && <Basket store={store} {...{ shopBasket, removeShopBasket, currentItemDelete }} />}
+                {page === 'basket' && <Basket {...{ shopBasket, removeShopBasket, currentItemDelete }} />}
             </div>
         </div>
     </div>

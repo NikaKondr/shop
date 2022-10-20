@@ -1,4 +1,4 @@
-.shop-content-modal {
+.main {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -15,42 +15,37 @@
 
     transition: all 0.3s;
 
-    &_active {
-        z-index: 999;
-        opacity: 1;
-    }
-
-    &__title {
+    .__title {
         font-family: 'Geometria Medium';
         font-size: 3.333333333333333vh;
         color: #fff;
     }
 
-    &__money {
+    .__money {
         display: flex;
 
         font-family: 'Geometria Medium';
         font-size: 1.2037037037037037vh;
         color: #fff;
-        
+
         & span:last-of-type {
             margin-left: 0.9259259259259258vh;
         }
     }
 
-    &__amount {
+    .__amount {
         margin-top: 1.2037037037037037vh;
 
         font-family: 'Geometria Medium';
         font-size: 1.2037037037037037vh;
         color: #fff;
-        
+
         & span {
             color: #17B627;
         }
     }
 
-    &-payment {
+    .payment {
         padding-left: 5vh;
         padding-right: 5vh;
 
@@ -66,7 +61,7 @@
         background: linear-gradient(253.21deg, rgba(37, 50, 94, 0.45) 0%, rgba(88, 121, 239, 0.45) 100%);
         border-radius: 2.314814814814815vh;
 
-        &-box {
+        .box {
             position: relative;
 
             width: 15.092592592592592vh;
@@ -112,30 +107,42 @@
                 z-index: -1;
             }
 
-            &_active::before, &:hover::before {
+            &:hover {
+                box-shadow: 0vh 0.4629629629629629vh 0.18518518518518517vh rgba(0, 0, 0, 0.25);
+
+                &::before {
+                    opacity: 0;
+                }
+
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .box_active {
+            box-shadow: 0vh 0.4629629629629629vh 0.18518518518518517vh rgba(0, 0, 0, 0.25);
+
+            &::before {
                 opacity: 0;
             }
 
-            &_active::after, &:hover::after {
+            &::after {
                 opacity: 1;
-            }
-
-            &_active, &:hover {
-                box-shadow: 0vh 0.4629629629629629vh 0.18518518518518517vh rgba(0, 0, 0, 0.25);
             }
         }
     }
 
-    &-buttons {
+    .buttons {
         margin-top: 3.148148148148148vh;
         display: flex;
 
-        &-box {
+        .box {
             margin-right: 2.5vh;
 
             width: 16.944444444444443vh;
             height: 4.814814814814815vh;
-            
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -157,4 +164,9 @@
             }
         }
     }
+}
+
+.main_active {
+    z-index: 999;
+    opacity: 1;
 }

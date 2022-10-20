@@ -4,9 +4,10 @@ import {
     action
 } from "mobx";
 
-interface IPlayerState {money: {cash: string, card: string}}
+interface IPlayerState {
+    money: { [ key: string ]: string }
 
-
+}
 export default class PlayerStore {
 
     playerState: IPlayerState = {
@@ -16,21 +17,21 @@ export default class PlayerStore {
         }
     }
 
-    constructor() {
-        makeObservable(this, {
+    constructor () {
+        makeObservable( this, {
             playerState: observable,
 
             setPlayerState: action.bound
-        });
+        } );
 
     }
 
-    setPlayerState(obj: any) {
-        switch (obj.type) {
+    setPlayerState( obj: { type: string, data: any } ) {
+        switch ( obj.type ) {
             case 'money':
                 return this.playerState.money = obj.data;
-            
-        
+
+
             default: {
                 return this.playerState = obj.data;
             }

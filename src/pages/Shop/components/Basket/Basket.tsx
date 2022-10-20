@@ -2,31 +2,35 @@ import React from 'react';
 import cn from 'classnames';
 import { observer } from 'mobx-react-lite';
 
-import './Basket.scss'
+import style from './basket.module.scss'
+import { IShopBasket } from '../../Shop';
 
-const Basket: React.FC<{ store: any, shopBasket: any, removeShopBasket: any, currentItemDelete: any }> = ( { store, shopBasket, removeShopBasket, currentItemDelete } ) => {
+const Basket: React.FC<{
+    shopBasket: IShopBasket[], removeShopBasket: any,
+    currentItemDelete: IShopBasket | null
+}> = ( { shopBasket, removeShopBasket, currentItemDelete } ) => {
 
-    return <div className='shop-content-container-basket'>
-        <div className='shop-content-container-basket__title'>Ваша корзина</div>
-        <div className='shop-content-container-basket__desc'>Максимальная вместимость корзины <span>20</span> предметов!</div>
-        <div className='shop-content-container-basket-list'>
-            <div className='shop-content-container-basket-list-titles'>
-                <div className='shop-content-container-basket-list-titles__number'>Номер</div>
-                <div className='shop-content-container-basket-list-titles__name'>Имя товара</div>
-                <div className='shop-content-container-basket-list-titles__amount'>Стоимость</div>
+    return <div className={style.main}>
+        <div className={style.__title}>Ваша корзина</div>
+        <div className={style.__desc}>Максимальная вместимость корзины <span>20</span> предметов!</div>
+        <div className={style.list}>
+            <div className={style.titles}>
+                <div className={style.__number}>Номер</div>
+                <div className={style.__name}>Имя товара</div>
+                <div className={style.__amount}>Стоимость</div>
             </div>
-            <div className='shop-content-container-basket-list-container'>
-                {shopBasket.map( ( el: any, key: any ) => {
+            <div className={style.container}>
+                {shopBasket.map( ( el, key ) => {
                     return <div key={el.uuid}
-                        className={cn( 'shop-content-container-basket-list-container-box',
-                            currentItemDelete?.uuid === el.uuid && 'shop-content-container-basket-list-container-box_delete'
+                        className={cn( style.box,
+                            currentItemDelete?.uuid === el.uuid && style.box_delete
                         )}
                         style={{ top: `${ key * 4.537037037037036 }vh` }}
                     >
-                        <div className='shop-content-container-basket-list-container-box__number'>{key + 1}</div>
-                        <div className='shop-content-container-basket-list-container-box__name'>{el.name}</div>
-                        <div className='shop-content-container-basket-list-container-box__amount'>{el.price} $</div>
-                        <div className='shop-content-container-basket-list-container-box__button' onClick={() => removeShopBasket( el )}></div>
+                        <div className={style.__number}>{key + 1}</div>
+                        <div className={style.__name}>{el.name}</div>
+                        <div className={style.__amount}>{el.price} $</div>
+                        <div className={style.__button} onClick={() => removeShopBasket( el )}></div>
                     </div>
                 } )}
             </div>

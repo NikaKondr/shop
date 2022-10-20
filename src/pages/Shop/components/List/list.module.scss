@@ -1,4 +1,4 @@
-.shop-content-container-list {
+.main {
     margin-top: 3.7037037037037033vh;
     margin-left: 4.444444444444444vh;
 
@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
 
-    &-header {
+    .header {
         padding-right: 7.222222222222221vh;
         width: 100%;
 
@@ -15,7 +15,7 @@
         justify-content: space-between;
 
 
-        &-basket {
+        .basket {
             display: flex;
             align-items: center;
 
@@ -24,19 +24,14 @@
 
             transition: all 0.3s;
 
-            &_active {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            &-button {
+            .button {
                 position: relative;
 
                 width: 6.296296296296296vh;
                 height: 5.092592592592593vh;
 
                 background: #4B5FA6;
-                background-image: url(../../../../assets/images/shop/icons/shopcart.svg) ;
+                background-image: url(../../../../assets/images/shop/icons/shopcart.svg);
                 background-repeat: no-repeat;
                 background-size: 3.4259259259259256vh 3.0555555555555554vh;
                 background-position: 1.2037037037037037vh;
@@ -77,7 +72,12 @@
             }
         }
 
-        &-text {
+        .basket_active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .text {
             margin-top: 1.2037037037037037vh;
             font-family: 'Geometria Medium';
             font-size: 1.6666666666666665vh;
@@ -91,7 +91,7 @@
 
     }
 
-    &-items {
+    .items {
         margin-top: 1.8518518518518516vh;
 
         width: 95vh;
@@ -120,7 +120,7 @@
             border-radius: 2.314814814814815vh;
         }
 
-        &-box {
+        .box {
             position: relative;
 
             width: 20.555555555555554vh;
@@ -142,7 +142,7 @@
                 pointer-events: none;
             }
 
-            &__name {
+            .__name {
                 margin-top: auto;
 
                 font-family: 'Geometria Medium';
@@ -150,7 +150,7 @@
                 color: #818181;
             }
 
-            &__price {
+            .__price {
                 margin-top: 0.6481481481481481vh;
                 margin-bottom: 4.0740740740740735vh;
 
@@ -163,7 +163,7 @@
                 }
             }
 
-            &__button {
+            .__button {
                 position: absolute;
                 bottom: -0.9259259259259258vh;
 
